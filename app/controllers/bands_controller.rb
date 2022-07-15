@@ -5,12 +5,12 @@ class BandsController < ApplicationController
   def index
     @bands = Band.all
 
-    render json: @bands
+    render json: @bands.includes(:members), only: [:name]
   end
 
   # GET /bands/1
   def show
-    render json: @band
+    render json: @band, only: [:name]
   end
 
   # POST /bands
